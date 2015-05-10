@@ -1,0 +1,52 @@
+<!doctype html>
+<html ng-app="app">
+  <head>
+    <title> Contact List App </title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+  </head>
+  <body>
+    <div class="container" ng-controller="ContactController as vm">
+      <h1>Contact List App</h1>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Number</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+               <input type="text" class="form-control" ng-model="vm.contact.name" placeholder="Name"  />
+            </td>
+            <td>
+               <input type="text" class="form-control" ng-model="vm.contact.email" placeholder="Email"  />
+            </td>
+            <td>
+               <input type="text" class="form-control" ng-model="vm.contact.number" placeholder="Number"  />
+            </td>
+            <td>
+               <button type="button" class="btn btn-primary" ng-click="vm.addContact(vm.contact)" ng-if="!vm.isEditing">Add</button>
+               <button type="button" class="btn btn-primary" ng-click="vm.updateContact(vm.contact)" ng-if="vm.isEditing">Save</button>
+            </td>
+          </tr>
+          <tr ng-repeat="contact in vm.contactList">
+            <td>{{ contact.name }}</td>
+            <td>{{ contact.email }}</td>
+            <td>{{ contact.number }}</td>
+            <td>
+               <button type="button" class="btn btn-warning" ng-click="vm.viewContact(contact._id)">Edit</button>
+               <button type="button" class="btn btn-danger" ng-click="vm.deleteContact(contact._id)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  <script src="js/angular.js"></script>
+  <script src="js/ng-app/app.js"></script>
+  <script src="js/ng-app/controllers/contact_controller.js"></script>
+
+  </body>
+</html>
