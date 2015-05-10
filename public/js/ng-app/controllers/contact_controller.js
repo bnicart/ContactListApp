@@ -2,14 +2,14 @@ angular
   .module("app")
   .controller("ContactController", ContactController);
 
-ContactController.$inject = ['$http'];
+ContactController.$inject = ['$http', 'Contact'];
 
-function ContactController($http) {
+function ContactController($http, Contact) {
   var vm = this; 
   vm.isEditing = false;
   
   vm.setContactList = function() {
-    $http.get("/contact")
+    Contact.all()
       .success(function(data) {
         vm.contactList = data;
         vm.contact = {};
@@ -19,14 +19,14 @@ function ContactController($http) {
   vm.setContactList();
   
   vm.addContact = function(contact) {
-    $http.post("/contact", contact )
+    Contact.add(contact)
       .success(function(data) {
         vm.setContactList(); 
       });
   };
 
   vm.viewContact = function(contactID) {
-    $http.get("/contact/" + contactID)
+    Contact.show(contactID)
       .success(function(data) {
         vm.contact = data;
         vm.isEditing = true;
@@ -34,7 +34,7 @@ function ContactController($http) {
   };
 
   vm.updateContact = function(contact) {
-    $http.put("/contact/" + contact._id, contact)
+    Contact.update(contact)
       .success(function(data) {
         vm.contact = {};
         vm.isEditing = false;
@@ -43,7 +43,7 @@ function ContactController($http) {
   };
 
   vm.deleteContact = function(contactID) {
-    $http.delete("/contact/" + contactID)
+    Contact.remove(contactID)
       .success(function(data) {
         vm.setContactList();
       });
