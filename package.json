@@ -1,0 +1,25 @@
+{
+  "name": "ContactListApp",
+  "version": "1.0.0",
+  "description": "A contact list app using MEAN Stack",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bnicart/ContactListApp.git"
+  },
+  "author": "Billy Nicart Jr",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bnicart/ContactListApp/issues"
+  },
+  "homepage": "https://github.com/bnicart/ContactListApp",
+  "dependencies": {
+    "body-parser": "^1.12.3",
+    "express": "^4.12.3",
+    "mongojs": "^0.18.2"
+  }
+}
