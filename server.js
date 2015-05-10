@@ -1,7 +1,7 @@
 var express = require("express");
 var app = express();
 var mongojs = require("mongojs");
-var db = mongojs('contacts',['contacts']);
+var db = mongojs('myDB',['contacts']);
 var bodyParser = require("body-parser");
 
 /*
